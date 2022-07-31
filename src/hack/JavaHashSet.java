@@ -44,7 +44,6 @@ public class JavaHashSet {
 			System.out.println(s.size());
 		}
 	
-		
 		sc.close();
 		
 	}
