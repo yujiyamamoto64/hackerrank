@@ -43,7 +43,7 @@ public class JavaHashSet {
 			s.add(pair_left[i] + " " + pair_right[i]);
 			System.out.println(s.size());
 		}
-	
+		
 		sc.close();
 		
 	}
