@@ -1,5 +1,9 @@
 package hack;
 
+/*
+ * https://www.hackerrank.com/challenges/java-instanceof-keyword/problem
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
