@@ -24,6 +24,10 @@ class Student {
 		this.cgpa = cgpa;
 	}
 
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
