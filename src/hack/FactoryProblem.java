@@ -35,9 +35,6 @@ class FoodFactory {
 			return pizza;
 		}
 		
-	
-	
-
 	}// End of getFood method
 
 }// End of factory class
