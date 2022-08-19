@@ -5,6 +5,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
+/*
+ * https://www.hackerrank.com/challenges/java-md5/problem
+ */
+
 public class MD5Problem {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException {
