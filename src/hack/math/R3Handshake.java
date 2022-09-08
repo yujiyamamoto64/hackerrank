@@ -19,7 +19,7 @@ class Result3 {
 	 * The function is expected to return an INTEGER. The function accepts INTEGER n
 	 * as parameter.
 	 */
-
+	
 	public static int handshake(int n) {
 		// Write your code here
 		int count = 0;
@@ -55,5 +55,6 @@ public class R3Handshake {
 
 		bufferedReader.close();
 		bufferedWriter.close();
+		
 	}
 }
