@@ -94,11 +94,31 @@ class EmployeeNode {
 
 class EmployeeLinkedList {
 	private EmployeeNode head;
+	private int size;
 	
 	public void addToFront(Employee employee) {
 		EmployeeNode node = new EmployeeNode(employee);
 		node.setNext(head);
 		head = node;
+		size++;
+	}
+	
+	public EmployeeNode removeFromFront() {
+		if (isEmpty()) return null;
+		
+		EmployeeNode removedNode = head;
+		head = head.getNext();
+		size--;
+		removedNode.setNext(null);
+		return removedNode;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return head == null;
 	}
 	
 	public void printList() {
@@ -123,11 +143,19 @@ public class SinglyLinkedLists {
 
 		var list = new EmployeeLinkedList();
 		
+		System.out.println(list.isEmpty());
+		
 		list.addToFront(janeJones);
 		list.addToFront(johnDoe);
 		list.addToFront(marySmith);
 		list.addToFront(mikeWilson);
 		
+		System.out.println(list.getSize());
+		
+		list.printList();
+		
+		list.removeFromFront();
+		System.out.println(list.getSize());
 		list.printList();
 	}
 
