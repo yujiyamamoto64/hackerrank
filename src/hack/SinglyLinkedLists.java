@@ -1,5 +1,7 @@
 package hack;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Objects;
 
 class Employee {
@@ -182,30 +184,41 @@ public class SinglyLinkedLists {
 		var johnDoe = new Employee("John", "Doe", 4567);
 		var marySmith = new Employee("Mary", "Smith", 22);
 		var mikeWilson = new Employee("Mike", "Wilson", 3245);
+		var billEnd = new Employee("Bill", "End", 78);
 
-		var list = new EmployeeLinkedList();
+		LinkedList<Employee> list = new LinkedList<>();
+		list.addFirst(janeJones);
+		list.addFirst(johnDoe);
+		list.addFirst(marySmith);
+		list.addFirst(mikeWilson);
 		
-		list.addToFront(janeJones);
-		list.addToFront(johnDoe);
-		list.addToFront(marySmith);
-		list.addToFront(mikeWilson);
+		Iterator iter = list.iterator();
+		System.out.print("HEAD -> ");
+		while (iter.hasNext()) {
+			System.out.print(iter.next());
+			System.out.println("<=>");
+		}
+		System.out.println("null");
 		
-		list.printList();
-		System.out.println(list.getSize());
+		list.add(billEnd);
 		
-		Employee billEnd = new Employee("Bill", "End", 78);
-		list.addToEnd(billEnd);
+		iter = list.iterator();
+		System.out.print("HEAD -> ");
+		while (iter.hasNext()) {
+			System.out.print(iter.next());
+			System.out.println("<=>");
+		}
+		System.out.println("null");
 		
-		list.printList();
-		System.out.println(list.getSize());
-		
-		list.removeFromFront();
-		list.printList();
-		System.out.println(list.getSize());
-		
-		list.removeFromEnd();
-		list.printList();
-		System.out.println(list.getSize());
+		list.removeFirst();
+		list.removeLast();
+		iter = list.iterator();
+		System.out.print("HEAD -> ");
+		while (iter.hasNext()) {
+			System.out.print(iter.next());
+			System.out.println("<=>");
+		}
+		System.out.println("null");
 	}
 
 }
