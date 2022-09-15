@@ -65,6 +65,7 @@ class Employee {
 class EmployeeNode {
 	private Employee employee;
 	private EmployeeNode next;
+	private EmployeeNode previous;
 	
 	public EmployeeNode(Employee employee) {
 		this.employee = employee;
@@ -86,20 +87,43 @@ class EmployeeNode {
 		this.next = next;
 	}
 	
+	public EmployeeNode getPrevious() {
+		return previous;
+	}
+
+	public void setPrevious(EmployeeNode previous) {
+		this.previous = previous;
+	}
+
 	public String toString() {
 		return employee.toString();
 	}
-	
 }
 
 class EmployeeLinkedList {
 	private EmployeeNode head;
+	private EmployeeNode tail;
 	private int size;
 	
 	public void addToFront(Employee employee) {
 		EmployeeNode node = new EmployeeNode(employee);
 		node.setNext(head);
+		
+		if (head == null) tail = node;
+		else head.setPrevious(node);
+		
 		head = node;
+		size++;
+	}
+	
+	public void addToEnd(Employee employee) {
+		EmployeeNode node = new EmployeeNode(employee);
+		if (tail == null) head = node;
+		else {
+			tail.setNext(node);
+			node.setPrevious(tail);
+		}
+		tail = node;
 		size++;
 	}
 	
@@ -107,9 +131,27 @@ class EmployeeLinkedList {
 		if (isEmpty()) return null;
 		
 		EmployeeNode removedNode = head;
+		
+		if (head.getNext() == null) tail = null;
+		else head.getNext().setPrevious(null);
+		
 		head = head.getNext();
 		size--;
 		removedNode.setNext(null);
+		return removedNode;
+	}
+	
+	public EmployeeNode removeFromEnd() {
+		if (isEmpty()) return null;
+		
+		EmployeeNode removedNode = tail;
+		
+		if (tail.getPrevious() == null) head = null;
+		else tail.getPrevious().setNext(null);
+		
+		tail = tail.getPrevious();
+		size--;
+		removedNode.setPrevious(null);
 		return removedNode;
 	}
 	
@@ -126,7 +168,7 @@ class EmployeeLinkedList {
 		System.out.print("HEAD -> ");
 		while (current != null) {
 			System.out.print(current);
-			System.out.println(" -> ");
+			System.out.println(" <=> ");
 			current = current.getNext();
 		}
 		System.out.println("null");
@@ -143,20 +185,27 @@ public class SinglyLinkedLists {
 
 		var list = new EmployeeLinkedList();
 		
-		System.out.println(list.isEmpty());
-		
 		list.addToFront(janeJones);
 		list.addToFront(johnDoe);
 		list.addToFront(marySmith);
 		list.addToFront(mikeWilson);
 		
+		list.printList();
 		System.out.println(list.getSize());
 		
+		Employee billEnd = new Employee("Bill", "End", 78);
+		list.addToEnd(billEnd);
+		
 		list.printList();
+		System.out.println(list.getSize());
 		
 		list.removeFromFront();
-		System.out.println(list.getSize());
 		list.printList();
+		System.out.println(list.getSize());
+		
+		list.removeFromEnd();
+		list.printList();
+		System.out.println(list.getSize());
 	}
 
 }
