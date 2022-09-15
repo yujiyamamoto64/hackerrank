@@ -129,6 +129,30 @@ class EmployeeLinkedList {
 		size++;
 	}
 	
+	public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+		
+		if (head == null) return false;
+		
+		EmployeeNode current = head;
+		while (current != null && !current.getEmployee().equals(existingEmployee)) {
+			current = current.getNext();
+		}
+		
+		if (current == null) return false;
+		
+		EmployeeNode newNode = new EmployeeNode(newEmployee);
+		newNode.setPrevious(current.getPrevious());
+		newNode.setNext(current);
+		current.setPrevious(newNode);
+		
+		if (head == current) head = newNode;
+		else newNode.getPrevious().setNext(newNode);
+		
+		size++;
+		
+		return true;
+	}
+	
 	public EmployeeNode removeFromFront() {
 		if (isEmpty()) return null;
 		
@@ -186,39 +210,19 @@ public class SinglyLinkedLists {
 		var mikeWilson = new Employee("Mike", "Wilson", 3245);
 		var billEnd = new Employee("Bill", "End", 78);
 
-		LinkedList<Employee> list = new LinkedList<>();
-		list.addFirst(janeJones);
-		list.addFirst(johnDoe);
-		list.addFirst(marySmith);
-		list.addFirst(mikeWilson);
+		EmployeeLinkedList list = new EmployeeLinkedList();
+		list.addToFront(janeJones);
+		list.addToFront(johnDoe);
+		list.addToFront(marySmith);
+		list.addToFront(mikeWilson);
+		list.printList();
 		
-		Iterator iter = list.iterator();
-		System.out.print("HEAD -> ");
-		while (iter.hasNext()) {
-			System.out.print(iter.next());
-			System.out.println("<=>");
-		}
-		System.out.println("null");
+		list.addBefore(billEnd, johnDoe);
+		list.printList();
 		
-		list.add(billEnd);
+		list.addBefore(new Employee("Someone", "Else", 111), mikeWilson);
+		list.printList();
 		
-		iter = list.iterator();
-		System.out.print("HEAD -> ");
-		while (iter.hasNext()) {
-			System.out.print(iter.next());
-			System.out.println("<=>");
-		}
-		System.out.println("null");
-		
-		list.removeFirst();
-		list.removeLast();
-		iter = list.iterator();
-		System.out.print("HEAD -> ");
-		while (iter.hasNext()) {
-			System.out.print(iter.next());
-			System.out.println("<=>");
-		}
-		System.out.println("null");
 	}
 
 }
