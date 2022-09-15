@@ -2,7 +2,7 @@ package hack;
 
 import java.util.Objects;
 
-class Employee {
+final class Employee {
 	private String firstName;
 	private String lastName;
 	private int id;
