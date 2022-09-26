@@ -57,6 +57,13 @@ public class SimpleHashtable {
 		
 		Employee employee = hashtable[hashedKey].employee;
 		hashtable[hashedKey] = null;
+		StoredEmployee[] oldHashtable = hashtable;
+		hashtable = new StoredEmployee[oldHashtable.length];
+		for (int i = 0; i < oldHashtable.length; i++) {
+			if (oldHashtable[i] != null) {
+				put (oldHashtable[i].key, oldHashtable[i].employee);
+			}
+		}
 		return employee;
 	}
 
@@ -128,5 +135,8 @@ public class SimpleHashtable {
 		ht.remove("Wilson");
 		ht.remove("Jones");
 		ht.printHashtable();
+		
+		System.out.println("Retrieve key Smith: " + ht.get("Smith"));
+
 	}
 }
