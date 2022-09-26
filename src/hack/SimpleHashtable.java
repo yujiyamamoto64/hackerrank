@@ -48,6 +48,17 @@ public class SimpleHashtable {
 		} 
 		return hashtable[hashedKey].employee;
 	}
+	
+	public Employee remove (String key) {
+		int hashedKey = findKey(key);
+		if (hashedKey == -1) {
+			return null;
+		}
+		
+		Employee employee = hashtable[hashedKey].employee;
+		hashtable[hashedKey] = null;
+		return employee;
+	}
 
 	private int hashKey(String key) {
 		return key.length() % hashtable.length;
@@ -72,13 +83,13 @@ public class SimpleHashtable {
 			hashedKey = (hashedKey + 1) % hashtable.length;
 		}
 		
-		if (stopIndex == hashedKey) {
+		if (hashtable[hashedKey] != null && 
+				hashtable[hashedKey].key.equals(key) ) {
+			return hashedKey;
+		} else {
 			return -1;
 		}
-		else {
-			return hashedKey;
-		}
-
+		
 	}
 
 	private boolean occupied(int index) {
@@ -114,5 +125,8 @@ public class SimpleHashtable {
 		System.out.println("Retrieve key Wilson: " + ht.get("Wilson"));
 		System.out.println("Retrieve key Smith: " + ht.get("Smith"));
 
+		ht.remove("Wilson");
+		ht.remove("Jones");
+		ht.printHashtable();
 	}
 }
