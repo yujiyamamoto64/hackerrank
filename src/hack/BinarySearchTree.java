@@ -41,6 +41,34 @@ class Tree2 {
 		
 		return null;
 	}
+	
+	public void delete(int value) {
+		root = delete(root, value);
+	}
+	
+	private TreeNode2 delete(TreeNode2 subtreeRoot, int value) {
+		if (subtreeRoot == null) {
+			return subtreeRoot;
+		}
+		
+		if (value < subtreeRoot.getData()) {
+			subtreeRoot.setLeftChild(delete(subtreeRoot.getLeftChild(), value));
+		}
+		else if (value > subtreeRoot.getData()) {
+			subtreeRoot.setRightChild(delete(subtreeRoot.getRightChild(), value));
+		}
+		else {
+			//cases 1 and 2: node to delete has 0 or 1 child(ren)
+			if (subtreeRoot.getLeftChild() == null) {
+				return subtreeRoot.getRightChild();
+			}
+			else if (subtreeRoot.getRightChild() == null) {
+				return subtreeRoot.getLeftChild();
+			}
+		}
+		
+		return subtreeRoot;
+	}
 }
 
 class TreeNode2 {
