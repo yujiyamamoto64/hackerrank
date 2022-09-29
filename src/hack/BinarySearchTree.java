@@ -12,10 +12,34 @@ class Tree2 {
 		}
 	}
 	
+	public int min() {
+		if (root == null) {
+			return Integer.MIN_VALUE;
+		} else {
+			return root.min();
+		}
+	}
+	
+	public int max() {
+		if (root == null) {
+			return Integer.MAX_VALUE;
+		} else {
+			return root.max();
+		}
+	}
+	
 	public void traverseInOrder() {
 		if (root != null) {
 			root.traverseInOrder();
 		}
+	}
+	
+	public TreeNode2 get (int value) {
+		if (root != null) {
+			return root.get(value);
+		}
+		
+		return null;
 	}
 }
 
@@ -45,6 +69,22 @@ class TreeNode2 {
 		}
 	}
 	
+	public int min() {
+		if (leftChild == null) {
+			return data;
+		} else {
+			return leftChild.min();
+		}
+	}
+	
+	public int max() {
+		if (rightChild == null) {
+			return data;
+		} else {
+			return rightChild.max();
+		}
+	}
+	
 	public void traverseInOrder() {
 		if (leftChild != null) {
 			leftChild.traverseInOrder();
@@ -53,6 +93,24 @@ class TreeNode2 {
 		if (rightChild != null) {
 			rightChild.traverseInOrder();
 		}
+	}
+	
+	public TreeNode2 get (int value) {
+		if (value == data) {
+			return this;
+		}
+		
+		if (value < data) {
+			if (leftChild != null) {
+				return leftChild.get(value);
+			}
+		} else {
+			if (rightChild != null) {
+				return rightChild.get(value);
+			}
+		}
+		
+		return null;
 	}
 
 	public TreeNode2 (int data) {
@@ -82,6 +140,11 @@ class TreeNode2 {
 	public void setRightChild(TreeNode2 rightChild) {
 		this.rightChild = rightChild;
 	}
+
+	@Override
+	public String toString() {
+		return "Data = " + data;
+	}
 }
 
 public class BinarySearchTree {
@@ -97,7 +160,18 @@ public class BinarySearchTree {
 		intTree.insert(26);
 		intTree.insert(22);
 		intTree.insert(32);
+		intTree.insert(17);
 		
+		/*
 		intTree.traverseInOrder();
+		System.out.println();
+		
+		System.out.println(intTree.get(27));
+		System.out.println(intTree.get(17));
+		System.out.println(intTree.get(8888));
+		*/
+		
+		System.out.println(intTree.min());
+		System.out.println(intTree.max());
 	}
 }
