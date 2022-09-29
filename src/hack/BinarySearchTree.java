@@ -65,6 +65,15 @@ class Tree2 {
 			else if (subtreeRoot.getRightChild() == null) {
 				return subtreeRoot.getLeftChild();
 			}
+			
+			// case 3: node to delete has 2 children
+			
+			// Replace the value in the subtreeRoot	node with smallest value
+			// from the right subtree
+			subtreeRoot.setData(subtreeRoot.getRightChild().min());
+			
+			// Delete the node that has the smallest value in the right subtree
+			subtreeRoot.setRightChild(delete(subtreeRoot.getRightChild(), subtreeRoot.getData()));
 		}
 		
 		return subtreeRoot;
@@ -190,16 +199,39 @@ public class BinarySearchTree {
 		intTree.insert(32);
 		intTree.insert(17);
 		
-		/*
+		
 		intTree.traverseInOrder();
 		System.out.println();
 		
+		/*
 		System.out.println(intTree.get(27));
 		System.out.println(intTree.get(17));
 		System.out.println(intTree.get(8888));
-		*/
+		
 		
 		System.out.println(intTree.min());
 		System.out.println(intTree.max());
+		*/
+		
+		// deleting the min, case 1
+		intTree.delete(15);
+		intTree.traverseInOrder();
+		System.out.println();
+		
+		// deleting leaf
+		intTree.delete(17);
+		intTree.traverseInOrder();
+		System.out.println();
+		
+		// Deleting root
+		intTree.delete(25);
+		intTree.traverseInOrder();
+		System.out.println();
+		
+		// Deleting non existing element
+		intTree.delete(8888);
+		intTree.traverseInOrder();
+		System.out.println();
+		
 	}
 }
