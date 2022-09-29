@@ -34,6 +34,12 @@ class Tree2 {
 		}
 	}
 	
+	public void traversePreOrder() {
+		if (root != null) {
+			root.traversePreOrder();
+		}
+	}
+	
 	public TreeNode2 get (int value) {
 		if (root != null) {
 			return root.get(value);
@@ -132,6 +138,18 @@ class TreeNode2 {
 		}
 	}
 	
+	public void traversePreOrder() {
+		
+		System.out.print(data + ", ");
+
+		if (leftChild != null) {
+			leftChild.traversePreOrder();
+		}
+		if (rightChild != null) {
+			rightChild.traversePreOrder();
+		}
+	}
+	
 	public TreeNode2 get (int value) {
 		if (value == data) {
 			return this;
@@ -203,6 +221,9 @@ public class BinarySearchTree {
 		intTree.traverseInOrder();
 		System.out.println();
 		
+		intTree.traversePreOrder();
+		System.out.println();
+		
 		/*
 		System.out.println(intTree.get(27));
 		System.out.println(intTree.get(17));
@@ -211,7 +232,7 @@ public class BinarySearchTree {
 		
 		System.out.println(intTree.min());
 		System.out.println(intTree.max());
-		*/
+		
 		
 		// deleting the min, case 1
 		intTree.delete(15);
@@ -232,6 +253,6 @@ public class BinarySearchTree {
 		intTree.delete(8888);
 		intTree.traverseInOrder();
 		System.out.println();
-		
+		*/
 	}
 }
