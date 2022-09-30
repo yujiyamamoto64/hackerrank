@@ -19,6 +19,14 @@ public class Heap {
 		fixHeapAbove(size);
 		size++;
 	}
+	
+	public int peek() {
+		if (isEmpty()) {
+			throw new IndexOutOfBoundsException("Heap is empty");
+		}
+		
+		return heap[0];
+	}
 
 	public int delete(int index) {
 		if (isEmpty()) {
@@ -116,7 +124,10 @@ public class Heap {
 		
 		heap.printHeap();
 		
-		heap.delete(5);
-		heap.printHeap();
+		System.out.println(heap.peek());
+		
+		heap.delete(0);
+		
+		System.out.println(heap.peek());
 	}
 }
