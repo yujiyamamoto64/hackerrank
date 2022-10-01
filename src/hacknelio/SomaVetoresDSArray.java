@@ -29,7 +29,6 @@ public class SomaVetoresDSArray {
 		for (int e : arr3) {
 			System.out.println(e);
 		}
-		
 	}
 
 	public static void fillArray(int[] arr, Scanner sc) {
