@@ -8,6 +8,12 @@ public class Pessoa {
 	
 	public Pessoa() {
 	}
+	
+	public Pessoa(String name, Integer idade) {
+		super();
+		this.name = name;
+		this.idade = idade;
+	}
 
 	public Pessoa(String name, Integer idade, Double altura) {
 		super();
