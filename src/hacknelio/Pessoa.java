@@ -5,6 +5,7 @@ public class Pessoa {
 	private String name;
 	private Integer idade;
 	private Double altura;
+	private String genero;
 	
 	public Pessoa() {
 	}
@@ -13,6 +14,11 @@ public class Pessoa {
 		super();
 		this.name = name;
 		this.idade = idade;
+	}
+	
+	public Pessoa(Double altura, String genero) {
+		this.altura = altura;
+		this.setGenero(genero);
 	}
 
 	public Pessoa(String name, Integer idade, Double altura) {
@@ -44,6 +50,14 @@ public class Pessoa {
 
 	public void setAltura(Double altura) {
 		this.altura = altura;
+	}
+	
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero2) {
+		this.genero = genero2;
 	}
 
 	@Override
