@@ -19,12 +19,11 @@ public class DadosPessoasDSArray {
 			pessoas[i] = new Pessoa(altura, genero);
 		}
 		
-	
 		System.out.println(menorAltura(pessoas));	
 		System.out.println(maiorAltura(pessoas));	
 		System.out.println(mediaDasAlturasDasMulheres(pessoas));	
 		System.out.println(numeroDeHomens(pessoas));	
-		
+
 	}
 
 	public static int numeroDeHomens(Pessoa[] pessoas) {
@@ -35,7 +34,6 @@ public class DadosPessoasDSArray {
 			}
 		}
 		return total;
-		
 	}
 
 	public static Double mediaDasAlturasDasMulheres(Pessoa[] pessoas) {
